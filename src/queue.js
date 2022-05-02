@@ -14,20 +14,32 @@ const { ListNode } = require('../extensions/list-node.js');
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
 class Queue {
-
-  getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  constructor() {
+    this.start = null;
+    this.end = null;
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  getUnderlyingList() {
+    return this.start
+  }
+
+  enqueue(value) {
+    const newNode = new ListNode(value);
+    if (this.end) {
+      this.end.next = newNode
+    }
+    this.end=newNode
+    
+    if (!this.start) {
+      this.start = this.end;
+    }
+
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    const value = this.start.value;
+    this.start = this.start.next
+    return value
   }
 }
 
